@@ -3,11 +3,12 @@ import api from '../services/api';
 import io from 'socket.io-client';
 
 import './Feed.css';
+import { PostList } from './FeedStyles';
 
-import more from '../assets/more.png';
-import like from '../assets/like.png';
-import comment from '../assets/comment.png';
-import send from '../assets/send.png';
+import more from '../assets/more.svg';
+import like from '../assets/like.svg';
+import comment from '../assets/comment.svg';
+import send from '../assets/send.svg';
 
 class Feed extends Component {
 
@@ -49,7 +50,7 @@ class Feed extends Component {
 
     render() {
         return (
-            <section id="post-list">
+            <PostList>
                 { this.state.feed.map(post => (
                     <article key={post._id}>
                         <header>
@@ -59,7 +60,7 @@ class Feed extends Component {
                             </div>
                             <img src={more} alt="More" />
                         </header>
-                        <img src={`http://localhost:3333/files/${post.image}`} alt="img-post"/>
+                        <img className="img-post" src={`http://localhost:3333/files/${post.image}`} alt="img-post"/>
                         <footer>
                             <div className="actions">
                                 <button type="button" onClick={() => this.handleLike(post._id)}>
@@ -76,7 +77,7 @@ class Feed extends Component {
                         </footer>
                     </article>
                 )) }
-            </section>
+            </PostList>
         );
     }
 }

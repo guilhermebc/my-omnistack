@@ -11,13 +11,13 @@ const io = require('socket.io')(server);
 const rootDB = 'mongodb+srv://semana:semana@cluster0-es9i9.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(rootDB, {
-    useNewUrlParser: true
+  useNewUrlParser: true,
 });
 
 app.use((req, res, next) => {
-    req.io = io;
+  req.io = io;
 
-    next();
+  next();
 });
 
 app.use(cors());
